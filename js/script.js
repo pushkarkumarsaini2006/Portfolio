@@ -6,7 +6,7 @@ var typed = new Typed(".typing", {
     loop: true,
 })
 var typed = new Typed(".typing1", {
-    strings: ["Student", "Developer","Engeineer", "Researcher"],
+    strings: ["Student", "Developer","Engineer", "Researcher"],
     typeSpeed: 100,
     BackSpeed: 40,
     loop: true,
