@@ -5,6 +5,12 @@ var typed = new Typed(".typing", {
     BackSpeed: 40,
     loop: true,
 })
+var typed = new Typed(".typing1", {
+    strings: ["Student", "Developer","Engeineer", "Researcher"],
+    typeSpeed: 100,
+    BackSpeed: 40,
+    loop: true,
+})
 /* ============================== Aside ============================ */
 const nav = document.querySelector(".nav"),
     navList = nav.querySelectorAll("li"),
