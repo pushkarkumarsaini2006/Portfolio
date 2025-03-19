@@ -1,12 +1,12 @@
 /* ============================== typing animation ============================ */
 var typed = new Typed(".typing", {
-    strings: ["Software Engineer", "Web Developer","Web Designer", "Researcher"],
+    strings: ["Software Engineer", "Full-Stack Developer",],
     typeSpeed: 100,
     BackSpeed: 40,
     loop: true,
 })
 var typed = new Typed(".typing1", {
-    strings: ["Student", "Developer","Engineer", "Researcher"],
+    strings: ["Developer", "Engineer", "Student", "Researcher"],
     typeSpeed: 100,
     BackSpeed: 40,
     loop: true,
