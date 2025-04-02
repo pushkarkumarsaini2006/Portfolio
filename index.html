@@ -577,16 +577,13 @@
         emailjs.send('service_7y7igtl', 'template_hyqul7y', templateParams)
           .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
-            // Update button UI to show success
             document.getElementById('submitButton').classList.add('submitted');
             document.getElementById('submitButton').textContent = 'Sent';
-            // Reset the form
             document.getElementById('contact-form').reset();
-            // Reset button after 2 seconds
             setTimeout(() => {
               document.getElementById('submitButton').classList.remove('submitted');
               document.getElementById('submitButton').textContent = 'Send';
-            }, 1000);
+            }, 750);
           })
           .catch(function (error) {
             console.log('FAILED...', error);
