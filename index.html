@@ -22,7 +22,7 @@
   <style>
     #submitButton {
       padding: 10px 20px;
-      background-color: --skin color;
+      background-color: --skin-color;
       color: rgb(255, 255, 255);
       border: none;
       border-radius: 10px;
@@ -378,7 +378,9 @@
             <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark">
                 <div class="portfolio-img">
-                  <img src="images/portfolio/blog_website.png" alt="Screenshot of a custom-built blog platform">
+                  <img src="images/portfolio/blog_website.png"
+                    alt="Screenshot of a custom-built blog platform showcasing the homepage">
+
                   <p class="project-name">Blog Website</p>
                 </div>
               </div>
@@ -388,7 +390,9 @@
             <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark">
                 <div class="portfolio-img">
-                  <img src="images/portfolio/chat_app.png" alt="Preview of real-time messaging application">
+                  <img src="images/portfolio/chat_app.png"
+                    alt="Preview of a real-time messaging application with chat features">
+
                   <p class="project-name">Chat Application</p>
                 </div>
               </div>
@@ -398,7 +402,9 @@
             <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark">
                 <div class="portfolio-img">
-                  <img src="images/portfolio/E-Commerce_website.png" alt="Snapshot of online shopping platform">
+                  <img src="images/portfolio/E-Commerce_website.png"
+                    alt="Snapshot of an online shopping platform with product listings">
+
                   <p class="project-name">E-Commerce Website</p>
                 </div>
               </div>
@@ -409,7 +415,9 @@
               <div class="portfolio-item-inner shadow-dark">
                 <div class="portfolio-img">
                   <a href="https://netflix-clone-xi-rose-30.vercel.app" target="_blank">
-                    <img src="images/portfolio/Netflix Clone.png" alt="Preview of Netflix-inspired streaming interface">
+                    <img src="images/portfolio/Netflix Clone.png"
+                      alt="Preview of Netflix-inspired streaming interface for watching movies and shows">
+
                     <p class="project-name">Netflix Clone</p>
                   </a>
                 </div>
@@ -421,7 +429,9 @@
               <div class="portfolio-item-inner shadow-dark">
                 <div class="portfolio-img">
                   <a href="https://spotify-clone-gilt-ten.vercel.app" target="_blank">
-                    <img src="images/portfolio/Spotify Clone.png" alt="Screenshot of Spotify-like music player">
+                    <img src="images/portfolio/Spotify Clone.png"
+                      alt="Screenshot of Spotify-like music player interface for streaming music">
+
                     <p class="project-name">Spotify Clone</p>
                   </a>
                 </div>
@@ -562,11 +572,11 @@
         var subject = document.getElementById('subject').value.trim();
         var message = document.getElementById('message').value.trim();
         // Validate form fields
-        if (name === '' || email === '' || subject === '' || message === '') {
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (name === '' || email === '' || subject === '' || message === '' || !emailPattern.test(email)) {
           alert('Please fill all fields to submit the form.');
-          return; // Stop execution if any field is empty
+          return;
         }
-        // Prepare email parameters
         var templateParams = {
           from_name: name,
           reply_to: email,
@@ -574,7 +584,6 @@
           subject: subject,
           message: message
         };
-        // Send email using EmailJS
         emailjs.send('service_7y7igtl', 'template_hyqul7y', templateParams)
           .then(function (response) {
             console.log('SUCCESS!', response.status, response.text);
