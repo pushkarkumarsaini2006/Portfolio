@@ -11,7 +11,9 @@
   <!-- ===== CSS Files ===== -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/skins/color-1.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- ===== AOS Animation Library ===== -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- ====== Style Switcher ====== -->
   <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
   <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
@@ -53,9 +55,436 @@
     }
   </style>
   <link rel="icon" type="image/png" href="images/Profile Pic.png">
+  <!-- ===== Enhanced Styles ===== -->
+  <style>
+    /* Loading Screen */
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #151515 0%, #222222 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .loader-wrapper.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+    .loader::before,
+    .loader::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      animation: pulsOut 1.8s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px var(--skin-color));
+    }
+    .loader::before {
+      width: 100%;
+      height: 100%;
+      border: 4px solid var(--skin-color);
+      animation-delay: -0.5s;
+    }
+    .loader::after {
+      width: 60%;
+      height: 60%;
+      top: 20%;
+      left: 20%;
+      border: 4px solid var(--skin-color);
+    }
+    @keyframes pulsOut {
+      0%, 100% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1); opacity: 1; }
+    }
+    
+    /* Particle Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--skin-color);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 999;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .scroll-to-top:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .scroll-to-top i {
+      color: #fff;
+      font-size: 20px;
+    }
+    
+    /* Custom Cursor */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--skin-color);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: all 0.1s ease;
+      z-index: 10000;
+      mix-blend-mode: difference;
+    }
+    .cursor-follower {
+      width: 40px;
+      height: 40px;
+      background: var(--skin-color);
+      opacity: 0.3;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+    .cursor.hover {
+      transform: translate(-50%, -50%) scale(1.5);
+      background: var(--skin-color);
+      opacity: 0.5;
+    }
+    
+    /* Social Links */
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid var(--skin-color);
+      border-radius: 50%;
+      color: var(--skin-color);
+      font-size: 18px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .social-links a::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--skin-color);
+      transform: scale(0);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: -1;
+    }
+    .social-links a:hover {
+      color: #fff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .social-links a:hover::before {
+      transform: scale(1);
+    }
+    
+    /* Glowing Text Effect - Subtle */
+    .glow-text {
+      text-shadow: 0 0 5px rgba(var(--skin-color-rgb), 0.3);
+    }
+    
+    /* Bounce on Hover Animation */
+    @keyframes bounceOnce {
+      0% { transform: scale(1.03); }
+      30% { transform: scale(1.08) translateY(-10px); }
+      50% { transform: scale(1.05) translateY(-5px); }
+      70% { transform: scale(1.06) translateY(-8px); }
+      100% { transform: scale(1.03); }
+    }
+    
+    /* Glassmorphism Cards */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Enhanced Buttons */
+    .btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    /* Animated Background Gradient */
+    .animated-gradient {
+      background: linear-gradient(-45deg, #151515, #222222, var(--skin-color), #151515);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Enhanced Service Cards */
+    .service-item-inner {
+      position: relative;
+      overflow: hidden;
+    }
+    .service-item-inner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
+      opacity: 0;
+    }
+    .service-item-inner:hover::before {
+      animation: shimmer 1.5s ease infinite;
+      opacity: 1;
+    }
+    @keyframes shimmer {
+      0% { transform: rotate(45deg) translateX(-200%); }
+      100% { transform: rotate(45deg) translateX(200%); }
+    }
+    
+    /* Portfolio Card Hover Effect */
+    .portfolio-item-inner {
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .portfolio-item-inner:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .portfolio-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-img img {
+      transition: all 0.5s ease;
+    }
+    .portfolio-item-inner:hover .portfolio-img img {
+      transform: scale(1.1);
+    }
+    
+    /* Timeline Glow - Subtle */
+    .circle-dot {
+      box-shadow: 0 0 5px rgba(var(--skin-color-rgb), 0.5);
+    }
+    
+    /* Smooth Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-black-900);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--skin-color);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--skin-color);
+      opacity: 0.8;
+    }
+    
+    /* Contact Info Hover */
+    .contact-info-item {
+      transition: all 0.4s ease;
+    }
+    .contact-info-item:hover {
+      transform: translateY(-10px);
+    }
+    .contact-info-item:hover .icon .fa {
+      animation: bounce 0.5s ease infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Form Input Focus Animation */
+    .form-control {
+      transition: all 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: var(--skin-color) !important;
+      box-shadow: 0 0 20px rgba(var(--skin-color-rgb), 0.3) !important;
+    }
+    
+    /* Ripple Effect */
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      background: radial-gradient(circle, var(--skin-color) 10%, transparent 10.01%);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      transform: scale(10);
+      opacity: 0;
+      transition: transform 0.5s, opacity 1s;
+    }
+    .ripple:active::after {
+      transform: scale(0);
+      opacity: 0.3;
+      transition: 0s;
+    }
+    
+    /* Nav Link Hover Effect */
+    .nav li a {
+      position: relative;
+      overflow: hidden;
+    }
+    .nav li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: var(--skin-color);
+      transition: left 0.3s ease;
+    }
+    .nav li a:hover::after {
+      left: 0;
+    }
+    
+    /* Skill Bar Animation */
+    .progress-in {
+      width: 0 !important;
+      transition: width 1.5s ease-in-out;
+    }
+    .progress-in.animate {
+      width: var(--progress-width) !important;
+    }
+    
+    /* Contact Info Item Visibility Fix */
+    .contact-info-item {
+      opacity: 1 !important;
+    }
+    .contact-info-item h4,
+    .contact-info-item p {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    
+    /* Info Item Stagger */
+    .info-item {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    /* Text Gradient */
+    .gradient-text {
+      background: linear-gradient(45deg, var(--skin-color), #fff, var(--skin-color));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientText 3s linear infinite;
+    }
+    @keyframes gradientText {
+      to { background-position: 200% center; }
+    }
+
+    @media (max-width: 768px) {
+      .cursor, .cursor-follower {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- Loading Screen -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+  
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+  
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+  
+  <!-- Scroll to Top Button -->
+  <div class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
   <!-- ===== Main Container Start ===== -->
   <div class="main-container">
     <!-- ===== Aside Start ===== -->
@@ -92,9 +521,15 @@
                 technologies to solve complex problems, I aim to deliver high quality, reliable solutions that meet
                 client and user needs.</p>
               <a href="https://drive.google.com/file/d/1ALl5Ovd9Juxc4l9_LlCr1wE-S8aJHPHi/view?usp=sharing"
-                target="blank" class="btn">Download Resume</a>
+                target="blank" class="btn ripple">Download Resume</a>
+              <!-- Social Links -->
+              <div class="social-links" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://github.com/pushkarkumarsaini2006" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://in.linkedin.com/in/pushkar-kumar-saini153600" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/pushkar_153600" target="_blank" rel="noopener" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
             </div>
-            <div class="home-img padd-15">
+            <div class="home-img padd-15" data-aos="fade-left" data-aos-duration="1000">
               <img src="images/Self.png" alt="Pushkar Kumar Saini">
             </div>
           </div>
@@ -105,7 +540,7 @@
       <section class="about section" id="about">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15">
+            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
               <h2>About Me</h2>
             </div>
           </div>
@@ -139,7 +574,7 @@
                         <p>Email : <span>pushkarkumarsaini2006@gmail.com</span></p>
                       </div>
                       <div class="info-item padd-15">
-                        <p>Degree : <span>Computer Science Engineering</span></p>
+                        <p>Degree : <span>Computer Science Engineering, Chandigarh University</span></p>
                       </div>
                       <div class="info-item padd-15">
                         <p>Phone : <span>+91 8279601166</span></p>
@@ -316,14 +751,14 @@
       <section class="service section" id="services">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15">
+            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
               <h2>Services</h2>
             </div>
           </div>
           <div class="row">
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15">
-              <div class="service-item-inner">
+            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-rocket"></i>
                 </div>
@@ -335,8 +770,8 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15">
-              <div class="service-item-inner">
+            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-laptop"></i>
                 </div>
@@ -347,8 +782,8 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15">
-              <div class="service-item-inner">
+            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="300">
+              <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-palette"></i>
                 </div>
@@ -358,8 +793,8 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15">
-              <div class="service-item-inner">
+            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="100">
+              <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-cogs"></i>
                 </div>
@@ -369,8 +804,8 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15">
-              <div class="service-item-inner">
+            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="200">
+              <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-search"></i>
                 </div>
@@ -380,8 +815,8 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15">
-              <div class="service-item-inner">
+            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="300">
+              <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-lock"></i>
                 </div>
@@ -398,7 +833,7 @@
       <section class="portfolio section" id="portfolio">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15">
+            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
               <h2>Projects</h2>
             </div>
           </div>
@@ -408,8 +843,8 @@
           </div>
           <div class="row">
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="100">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://blog-application-1-i0me.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Blog Application.png"
@@ -421,8 +856,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="200">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://interview-prep-ai-1-428b.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Interview Prep AI.png"
@@ -434,8 +869,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="300">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://task-manager-1-koap.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Task Manager.png"
@@ -447,8 +882,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="100">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://bookmark-manager-blue.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Bookmark-Manager.png"
@@ -460,8 +895,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="200">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://media-player-ten-self.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Media-Player.png"
@@ -473,8 +908,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="300">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://password-manager-nu-ten.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Password-Manager.png"
@@ -486,8 +921,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="100">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://netflix-clone-sooty-phi.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Netflix-Clone.png"
@@ -499,8 +934,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="200">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://spotify-clone-nu-two-55.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Spotify-Clone.png"
@@ -512,8 +947,8 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="300">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://software-download-portal.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Software-Download-Portal.png"
@@ -526,7 +961,7 @@
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
             <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://url-shortner-ecru-tau.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/URL-Shortner.png"
@@ -539,7 +974,7 @@
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
             <div class="portfolio-item padd-15">
-              <div class="portfolio-item-inner shadow-dark">
+              <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://expense-tracker-rk26.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Expense_Tracker.png"
@@ -558,7 +993,7 @@
       <section class="contact section" id="contact">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15">
+            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
               <h2>Contact Me</h2>
             </div>
           </div>
@@ -566,32 +1001,32 @@
           <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICE</h4>
           <div class="row">
             <!-- ===== Contact info item start ====== -->
-            <div class="contact-info-item padd-15">
+            <a href="tel:+918279601166" class="contact-info-item padd-15">
               <div class="icon"><i class="fa fa-phone"></i></div>
               <h4>Connect On</h4>
               <p>+91 8279601166</p>
-            </div>
+            </a>
             <!-- ===== Contact info item end ====== -->
             <!-- ===== Contact info item start ====== -->
-            <div class="contact-info-item padd-15">
+            <a href="https://www.google.com/maps/search/Moradabad,+Uttar+Pradesh,+India" target="_blank" rel="noopener" class="contact-info-item padd-15">
               <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
               <h4>Address</h4>
               <p>Moradabad, Uttar Pradesh</p>
-            </div>
+            </a>
             <!-- ===== Contact info item end ====== -->
             <!-- ===== Contact info item start ====== -->
-            <div class="contact-info-item padd-15">
+            <a href="mailto:pushkarkumarsaini2006@gmail.com" class="contact-info-item padd-15">
               <div class="icon"><i class="fa fa-envelope"></i></div>
               <h4>Email</h4>
               <p>pushkarkumarsaini2006@gmail.com</p>
-            </div>
+            </a>
             <!-- ===== Contact info item end ====== -->
             <!-- ===== Contact info item start ====== -->
-            <div class="contact-info-item padd-15">
+            <a href="https://portfolio-sigma-eosin-73.vercel.app" target="_blank" rel="noopener" class="contact-info-item padd-15">
               <div class="icon"><i class="fa fa-globe-europe"></i></div>
               <h4>Website</h4>
               <p>pushkarkumarsaini.com</p>
-            </div>
+            </a>
             <!-- ===== Contact info item end ====== -->
           </div>
           <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
@@ -666,6 +1101,12 @@
   <!-- ===== JS Files ===== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"
     referrerpolicy="no-referrer"></script>
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Vanilla Tilt for 3D Card Effect -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <!-- Particles.js for Background -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="js/script.js"></script>
   <script src="js/style-switcher.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -673,6 +1114,304 @@
     (function () {
       emailjs.init("GYQ6VHEu_6LIkKgs_");
     })();
+  </script>
+  
+  <!-- Enhanced Interactivity Script -->
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+
+    // Initialize Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.3, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+        line_linked: { enable: true, distance: 150, color: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252', opacity: 0.2, width: 1 },
+        move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+
+    // Loading Screen
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.querySelector('.loader-wrapper').classList.add('fade-out');
+      }, 1000);
+    });
+
+    // Custom Cursor
+    const cursor = document.querySelector('.cursor');
+    const follower = document.querySelector('.cursor-follower');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let followerX = 0, followerY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.2;
+      cursorY += (mouseY - cursorY) * 0.2;
+      followerX += (mouseX - followerX) * 0.1;
+      followerY += (mouseY - followerY) * 0.1;
+
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      follower.style.left = followerX + 'px';
+      follower.style.top = followerY + 'px';
+
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Cursor hover effects
+    const hoverElements = document.querySelectorAll('a, button, .btn, .service-item-inner, .portfolio-item-inner, .nav li a');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+        follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+        follower.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    // Scroll to Top Button
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
+    const sections = document.querySelectorAll('.section');
+
+    sections.forEach(section => {
+      section.addEventListener('scroll', function() {
+        if (this.classList.contains('active')) {
+          if (this.scrollTop > 300) {
+            scrollToTopBtn.classList.add('visible');
+          } else {
+            scrollToTopBtn.classList.remove('visible');
+          }
+        }
+      });
+    });
+
+    // Hide scroll-to-top when switching sections
+    const navLinks = document.querySelectorAll('.nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        scrollToTopBtn.classList.remove('visible');
+      });
+    });
+
+    // Also hide when clicking hire-me button
+    const hireMeBtn = document.querySelector('.hire-me');
+    if (hireMeBtn) {
+      hireMeBtn.addEventListener('click', () => {
+        scrollToTopBtn.classList.remove('visible');
+      });
+    }
+
+    scrollToTopBtn.addEventListener('click', () => {
+      const activeSection = document.querySelector('.section.active');
+      if (activeSection) {
+        activeSection.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
+    // Animate Skill Bars on Scroll
+    const skillBars = document.querySelectorAll('.progress-in');
+    const aboutSection = document.querySelector('#about');
+
+    function animateSkillBars() {
+      skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.setProperty('--progress-width', width);
+        bar.style.width = '0%';
+        setTimeout(() => {
+          bar.classList.add('animate');
+        }, 500);
+      });
+    }
+
+    // Check if About section is visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateSkillBars();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (aboutSection) {
+      observer.observe(aboutSection);
+    }
+
+    // Re-initialize AOS on section change
+    const navLinksAOS = document.querySelectorAll('.nav li a');
+    navLinksAOS.forEach(link => {
+      link.addEventListener('click', () => {
+        setTimeout(() => {
+          AOS.refresh();
+        }, 500);
+      });
+    });
+
+    // Initialize Vanilla Tilt for cards
+    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+      max: 15,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.2,
+    });
+
+    // Smooth reveal for elements
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Add stagger animation to info items
+    const infoItems = document.querySelectorAll('.info-item');
+    infoItems.forEach((item, index) => {
+      item.style.animationDelay = `${index * 0.1}s`;
+    });
+
+    // Text animation for typing effect - removed glow for cleaner look
+
+    // Enhanced nav hover effect
+    navLinks.forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateX(5px)';
+      });
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateX(0)';
+      });
+    });
+
+    // Parallax effect for home section
+    const homeSection = document.querySelector('#home');
+
+
+    // Form input animations
+    const formInputs = document.querySelectorAll('.form-control');
+    formInputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.02)';
+      });
+      input.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+      });
+    });
+
+    // Timeline item hover effect
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.querySelector('.circle-dot').style.transform = 'scale(1.5)';
+      });
+      item.addEventListener('mouseleave', function() {
+        this.querySelector('.circle-dot').style.transform = 'scale(1)';
+      });
+    });
+
+    // Add magnetic effect to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+      });
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translate(0, 0)';
+      });
+    });
+
+    /* Contact info cards animation */
+    const contactInfoItems = document.querySelectorAll('.contact-info-item');
+    contactInfoItems.forEach((item, index) => {
+      item.style.opacity = '1';
+      item.style.animation = `fadeInUp 0.6s ease ${index * 0.1}s forwards`;
+    });
+
+    // Service card counter animation
+    let serviceCount = 0;
+    const serviceItems = document.querySelectorAll('.service-item');
+    serviceItems.forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        serviceCount++;
+      });
+    });
+
+    // Add ripple effect to buttons
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+          position: absolute;
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}px;
+          top: ${y}px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transform: scale(0);
+          animation: rippleEffect 0.6s ease-out;
+          pointer-events: none;
+        `;
+        
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes rippleEffect {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
   <script type="text/javascript">
     window.onload = function () {
