@@ -19,7 +19,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap"></noscript>
   <!-- ===== CSS Files ===== -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/skins/color-1.css">
+  <!-- Inlined critical skin color to avoid render-blocking -->
+  <style id="skin-color-1">:root{--skin-color:#cc0909;}</style>
   <!-- Font Awesome with preload -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
@@ -31,7 +32,9 @@
   <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
   <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
   <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-  <link rel="stylesheet" href="css/style-switcher.css">
+  <!-- Style switcher CSS deferred (non-critical for initial paint) -->
+  <link rel="preload" href="css/style-switcher.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/style-switcher.css"></noscript>
   <!-- Preload critical Font Awesome font files -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
