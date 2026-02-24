@@ -347,7 +347,10 @@ ul {
 }
 
 .aside .nav li a.active {
-    color: var(--skin-color);
+    color: #ffffff;
+    background: linear-gradient(90deg, var(--skin-color), transparent);
+    padding-left: 25px;
+    font-weight: 600;
 }
 
 .aside .nav li a i {
@@ -575,7 +578,8 @@ h2.my-profession {
     max-width: 100%;
 }
 
-.about .about-content .skills .skill-item h5 {
+.about .about-content .skills .skill-item .skill-name {
+    display: block;
     line-height: 40px;
     font-weight: 600;
     font-size: 16px;
@@ -694,6 +698,7 @@ h2.my-profession {
 }
 
 .about .about-content .timeline .timeline-date {
+    display: block;
     font-weight: 400;
     font-size: 14px;
     margin-bottom: 12px;
@@ -780,7 +785,7 @@ h2.my-profession {
     color: #ffffff;
 }
 
-.service .service-item .service-item-inner h4 {
+.service .service-item .service-item-inner h3 {
     font-size: 18px;
     margin-bottom: 15px;
     color: var(--text-black-900);
@@ -894,7 +899,7 @@ h2.my-profession {
     text-shadow: 0 0 8px rgba(var(--skin-color-rgb), 0.5);
 }
 
-.contact .contact-info-item h4 {
+.contact .contact-info-item h5 {
     font-size: 18px;
     font-weight: 700;
     color: var(--text-black-900);
