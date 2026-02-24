@@ -8,18 +8,38 @@
   <title>Pushkar Kumar Saini</title>
   <meta name="description"
     content="This is the personal website of Pushkar Kumar Saini, showcasing his work, projects, and portfolio. Explore to learn more about his skills and achievements.">
+  <!-- ===== Preconnect hints for faster resource loading ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <!-- ===== CSS Files ===== -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/skins/color-1.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- ===== AOS Animation Library ===== -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Font Awesome with preload -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <!-- ===== AOS Animation Library (non-critical, deferred) ===== -->
+  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
   <!-- ====== Style Switcher ====== -->
   <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
   <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
   <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
   <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
   <link rel="stylesheet" href="css/style-switcher.css">
+  <!-- Font display fix for Font Awesome -->
+  <style>
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Brands';
+      font-display: swap;
+    }
+  </style>
   <style>
     #submitButton {
       padding: 10px 20px;
@@ -505,14 +525,14 @@
     </div>
     <!-- ===== Aside End ===== -->
     <!-- ===== Main Content Start ===== -->
-    <div class="main-content">
+    <main class="main-content" role="main">
       <!-- ===== Home Section Start ===== -->
       <section class="home active section" id="home">
         <div class="container">
           <div class="row">
             <div class="home-info padd-15">
-              <h3 class="hello">Hey there! My name is <span class="name">Pushkar Kumar Saini</span></h3>
-              <h3 class="my-profession">I'm a <span class="typing"></span></h3>
+              <h1 class="hello">Hey there! My name is <span class="name">Pushkar Kumar Saini</span></h1>
+              <h2 class="my-profession">I'm a <span class="typing"></span></h2>
               <p>
                 As a skilled full stack developer with more than a year of hands on experience, I specialize in
                 designing and building dynamic, responsive, and scalable web applications. With a strong foundation in
@@ -530,7 +550,7 @@
               </div>
             </div>
             <div class="home-img padd-15" data-aos="fade-left" data-aos-duration="1000">
-              <img src="images/Self.png" alt="Pushkar Kumar Saini">
+              <img src="images/Self.png" alt="Pushkar Kumar Saini" width="262" height="426" loading="eager" fetchpriority="high">
             </div>
           </div>
         </div>
@@ -848,7 +868,7 @@
                 <div class="portfolio-img">
                   <a href="https://blog-application-1-i0me.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Blog Application.png"
-                      alt="Screenshot of custom-built blog application platform">
+                      alt="Screenshot of custom-built blog application platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Blog Application</p>
                   </a>
                 </div>
@@ -861,7 +881,7 @@
                 <div class="portfolio-img">
                   <a href="https://interview-prep-ai-1-428b.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Interview Prep AI.png"
-                      alt="Screenshot of a custom-built interview prep ai platform">
+                      alt="Screenshot of a custom-built interview prep ai platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Interview Prep AI</p>
                   </a>
                 </div>
@@ -874,7 +894,7 @@
                 <div class="portfolio-img">
                   <a href="https://task-manager-1-koap.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Task Manager.png"
-                      alt="Screenshot of a custom-built task manager platform">
+                      alt="Screenshot of a custom-built task manager platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Task Manager</p>
                   </a>
                 </div>
@@ -887,7 +907,7 @@
                 <div class="portfolio-img">
                   <a href="https://bookmark-manager-blue.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Bookmark-Manager.png"
-                      alt="Screenshot of a custom-built bookmark manager platform">
+                      alt="Screenshot of a custom-built bookmark manager platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Bookmark Manager</p>
                   </a>
                 </div>
@@ -900,7 +920,7 @@
                 <div class="portfolio-img">
                   <a href="https://media-player-ten-self.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Media-Player.png"
-                      alt="Screenshot of a custom-built media player platform">
+                      alt="Screenshot of a custom-built media player platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Media Player</p>
                   </a>
                 </div>
@@ -913,7 +933,7 @@
                 <div class="portfolio-img">
                   <a href="https://password-manager-nu-ten.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Password-Manager.png"
-                      alt="Screenshot of a custom-built password manager platform">
+                      alt="Screenshot of a custom-built password manager platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Password Manager</p>
                   </a>
                 </div>
@@ -926,7 +946,7 @@
                 <div class="portfolio-img">
                   <a href="https://netflix-clone-sooty-phi.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Netflix-Clone.png"
-                      alt="Screenshot of a custom-built netflix clone platform">
+                      alt="Screenshot of a custom-built netflix clone platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Netflix Clone</p>
                   </a>
                 </div>
@@ -939,7 +959,7 @@
                 <div class="portfolio-img">
                   <a href="https://spotify-clone-nu-two-55.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Spotify-Clone.png"
-                      alt="Screenshot of a custom-built spotify clone platform">
+                      alt="Screenshot of a custom-built spotify clone platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Spotify Clone</p>
                   </a>
                 </div>
@@ -952,7 +972,7 @@
                 <div class="portfolio-img">
                   <a href="https://software-download-portal.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/Software-Download-Portal.png"
-                      alt="Screenshot of a custom-built software download portal platform">
+                      alt="Screenshot of a custom-built software download portal platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Software Download Portal</p>
                   </a>
                 </div>
@@ -965,7 +985,7 @@
                 <div class="portfolio-img">
                   <a href="https://url-shortner-ecru-tau.vercel.app" target="_blank" rel="noopener">
                     <img src="images/portfolio/URL-Shortner.png"
-                      alt="Screenshot of a custom-built url shortner platform">
+                      alt="Screenshot of a custom-built url shortner platform" width="335" height="188" loading="lazy">
                     <p class="project-name">URL Shortner</p>
                   </a>
                 </div>
@@ -978,7 +998,7 @@
                 <div class="portfolio-img">
                   <a href="https://expense-tracker-rk26.onrender.com" target="_blank" rel="noopener">
                     <img src="images/portfolio/Expense_Tracker.png"
-                      alt="Screenshot of a custom-built expense tracker platform">
+                      alt="Screenshot of a custom-built expense tracker platform" width="335" height="188" loading="lazy">
                     <p class="project-name">Expense Tracker</p>
                   </a>
                 </div>
@@ -1076,7 +1096,7 @@
         </div>
       </section>
       <!-- ===== Contact Section End ===== -->
-    </div>
+    </main>
     <!-- ===== Main Content End ===== -->
   </div>
   <!-- ===== Main Container End ===== -->
@@ -1100,49 +1120,51 @@
   <!-- ===== Style Switcher End ===== -->
   <!-- ===== JS Files ===== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"
-    referrerpolicy="no-referrer"></script>
+    referrerpolicy="no-referrer" defer></script>
   <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <!-- Vanilla Tilt for 3D Card Effect -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
   <!-- Particles.js for Background -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/style-switcher.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/style-switcher.js" defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
   <script type="text/javascript">
-    (function () {
+    document.addEventListener('DOMContentLoaded', function() {
       emailjs.init("GYQ6VHEu_6LIkKgs_");
-    })();
+    });
   </script>
   
   <!-- Enhanced Interactivity Script -->
   <script>
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true,
-      offset: 100
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+      });
 
-    // Initialize Particles.js
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252' },
-        shape: { type: 'circle' },
-        opacity: { value: 0.3, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
-        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
-        line_linked: { enable: true, distance: 150, color: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252', opacity: 0.2, width: 1 },
-        move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
-        modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
-      },
-      retina_detect: true
+      // Initialize Particles.js
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252' },
+          shape: { type: 'circle' },
+          opacity: { value: 0.3, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+          size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+          line_linked: { enable: true, distance: 150, color: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252', opacity: 0.2, width: 1 },
+          move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+          modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+      });
     });
 
     // Loading Screen
@@ -1265,17 +1287,21 @@
     navLinksAOS.forEach(link => {
       link.addEventListener('click', () => {
         setTimeout(() => {
-          AOS.refresh();
+          if (typeof AOS !== 'undefined') AOS.refresh();
         }, 500);
       });
     });
 
-    // Initialize Vanilla Tilt for cards
-    VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-      max: 15,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.2,
+    // Initialize Vanilla Tilt for cards (wait for library to load)
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+          max: 15,
+          speed: 400,
+          glare: true,
+          "max-glare": 0.2,
+        });
+      }
     });
 
     // Smooth reveal for elements
