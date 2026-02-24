@@ -419,6 +419,13 @@ h2.my-profession {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Ensure visibility (override any AOS styles) */
+    opacity: 1 !important;
+}
+
+/* Home social links - always visible */
+.home .social-links {
+    opacity: 1 !important;
 }
 
 .home .home-img picture {
