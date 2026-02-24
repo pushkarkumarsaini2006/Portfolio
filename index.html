@@ -1194,34 +1194,47 @@
   
   <!-- Enhanced Interactivity Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    // Use requestIdleCallback for non-critical library initialization
+    const initLibraries = () => {
       // Initialize AOS
-      AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100
-      });
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+          offset: 100
+        });
+      }
 
       // Initialize Particles.js
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252' },
-          shape: { type: 'circle' },
-          opacity: { value: 0.3, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
-          size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
-          line_linked: { enable: true, distance: 150, color: getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252', opacity: 0.2, width: 1 },
-          move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
-        },
-        interactivity: {
-          detect_on: 'canvas',
-          events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
-          modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
-        },
-        retina_detect: true
-      });
-    });
+      if (typeof particlesJS !== 'undefined') {
+        const skinColor = getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252';
+        particlesJS('particles-js', {
+          particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: skinColor },
+            shape: { type: 'circle' },
+            opacity: { value: 0.3, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+            size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+            line_linked: { enable: true, distance: 150, color: skinColor, opacity: 0.2, width: 1 },
+            move: { enable: true, speed: 1, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+            modes: { grab: { distance: 140, line_linked: { opacity: 0.5 } }, push: { particles_nb: 4 } }
+          },
+          retina_detect: true
+        });
+      }
+    };
+
+    // Defer non-critical initialization
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initLibraries, { timeout: 2000 });
+    } else {
+      setTimeout(initLibraries, 200);
+    }
 
     // Loading Screen
     window.addEventListener('load', function() {
@@ -1348,8 +1361,8 @@
       });
     });
 
-    // Initialize Vanilla Tilt for cards (wait for library to load)
-    document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Vanilla Tilt for cards (deferred to avoid main thread blocking)
+    const initVanillaTilt = () => {
       if (typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
           max: 15,
@@ -1358,7 +1371,13 @@
           "max-glare": 0.2,
         });
       }
-    });
+    };
+    
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initVanillaTilt, { timeout: 3000 });
+    } else {
+      setTimeout(initVanillaTilt, 500);
+    }
 
     // Smooth reveal for elements
     const revealElements = document.querySelectorAll('.reveal');
@@ -1416,16 +1435,21 @@
       });
     });
 
-    // Add magnetic effect to buttons
+    // Add magnetic effect to buttons (optimized to avoid forced reflows)
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(btn => {
+      let rect = null;
+      btn.addEventListener('mouseenter', function() {
+        rect = this.getBoundingClientRect();
+      });
       btn.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
+        if (!rect) return;
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
         this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
       });
       btn.addEventListener('mouseleave', function() {
+        rect = null;
         this.style.transform = 'translate(0, 0)';
       });
     });

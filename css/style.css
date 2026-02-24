@@ -26,7 +26,7 @@ body {
     line-height: 1.5;
     font-size: 16px;
     font-family: 'Poppins', sans-serif;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
@@ -60,7 +60,8 @@ ul {
     z-index: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: opacity, transform;
 }
 
 .section.back-section {
@@ -162,10 +163,11 @@ ul {
     white-space: nowrap;
     border: none;
     background: var(--skin-color);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    will-change: transform;
 }
 
 .btn:hover {
@@ -175,7 +177,7 @@ ul {
 
 .shadow-dark {
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.4s ease;
 }
 
 .shadow-dark:hover {
@@ -213,7 +215,7 @@ ul {
     font-size: 30px;
     letter-spacing: 5px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 .aside .logo a:hover {
@@ -223,7 +225,7 @@ ul {
 .aside .logo a span {
     font-family: 'Clicker Script', cursive;
     font-size: 40px;
-    transition: all 0.3s ease;
+    transition: text-shadow 0.3s ease;
 }
 
 .aside .logo a:hover span {
@@ -265,7 +267,7 @@ ul {
     display: none;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: left 0.3s ease, background-color 0.3s ease;
 }
 
 .aside .nav-toggler span {
@@ -326,7 +328,7 @@ ul {
     border-bottom: 1px solid var(--bg-black-50);
     color: var(--text-black-900);
     padding: 5px 15px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: padding-left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, color 0.3s ease;
     position: relative;
     overflow: hidden;
 }
