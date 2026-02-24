@@ -402,6 +402,13 @@ h2.my-profession {
 
 .typing {
     color: var(--skin-color);
+    display: inline-block;
+    min-width: 215px; /* Reserve space for "Full Stack Developer" to reduce CLS */
+}
+
+/* Reduce layout shift from typed cursor */
+.typed-cursor {
+    display: inline;
 }
 
 .home-info p {
