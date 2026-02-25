@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Welcome to my personal portfolio repository! This project showcases my skills, projects, and experiences as a developer.",
+  "main": "index.js",
+  "scripts": {
+    "build:js": "node node_modules/terser/bin/terser js/script.js -c -m -o js/script.min.js && node node_modules/terser/bin/terser js/style-switcher.js -c -m -o js/style-switcher.min.js",
+    "build": "npm run build:js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pushkarkumarsaini2006/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "Pushkar Kumar Saini",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pushkarkumarsaini2006/Portfolio/issues"
+  },
+  "homepage": "https://github.com/pushkarkumarsaini2006/Portfolio#readme",
+  "devDependencies": {
+    "terser": "^5.46.0"
+  }
+}
