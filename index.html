@@ -24,9 +24,7 @@
   <!-- Font Awesome with preload -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <!-- ===== AOS Animation Library (non-critical, deferred) ===== -->
-  <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+
   <!-- ====== Style Switcher ====== -->
   <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
   <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
@@ -368,10 +366,6 @@
       position: relative;
       overflow: hidden;
     }
-    .portfolio-img picture {
-      display: block;
-      width: 100%;
-    }
     .portfolio-img img {
       width: 100%;
       height: auto;
@@ -580,10 +574,7 @@
               </div>
             </div>
             <div class="home-img padd-15">
-              <picture>
-                <source srcset="images/Self.webp 1x, images/Self-2x.webp 2x" type="image/webp">
-                <img src="images/Self.png" alt="Pushkar Kumar Saini" width="262" height="426" loading="eager" fetchpriority="high">
-              </picture>
+              <img src="images/Self.png" alt="Pushkar Kumar Saini" width="262" height="426" loading="eager">
             </div>
           </div>
         </div>
@@ -593,7 +584,7 @@
       <section class="about section" id="about">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
+            <div class="section-title padd-15">
               <h2>About Me</h2>
             </div>
           </div>
@@ -804,13 +795,13 @@
       <section class="service section" id="services">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
+            <div class="section-title padd-15">
               <h2>Services</h2>
             </div>
           </div>
           <div class="row">
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item padd-15">
               <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-rocket"></i>
@@ -823,7 +814,7 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item padd-15">
               <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-laptop"></i>
@@ -835,7 +826,7 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item padd-15">
               <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-palette"></i>
@@ -846,7 +837,7 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item padd-15">
               <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-cogs"></i>
@@ -857,7 +848,7 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item padd-15">
               <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-search"></i>
@@ -868,7 +859,7 @@
             </div>
             <!-- ===== Service item End ====== -->
             <!-- ===== Service item Start ====== -->
-            <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item padd-15">
               <div class="service-item-inner glass-effect" data-tilt data-tilt-max="10" data-tilt-speed="400">
                 <div class="icon">
                   <i class="fa fa-lock"></i>
@@ -886,7 +877,7 @@
       <section class="portfolio section" id="portfolio">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
+            <div class="section-title padd-15">
               <h2>Projects</h2>
             </div>
           </div>
@@ -896,15 +887,11 @@
           </div>
           <div class="row">
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="100">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://blog-application-1-i0me.onrender.com" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Blog-Application.webp 1x, images/portfolio/Blog-Application-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Blog Application.png"
-                        alt="Screenshot of custom-built blog application platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Blog Application.png" alt="Screenshot of custom-built blog application platform" width="335" height="188">
                     <p class="project-name">Blog Application</p>
                   </a>
                 </div>
@@ -912,15 +899,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="200">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://interview-prep-ai-1-428b.onrender.com" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Interview-Prep-AI.webp 1x, images/portfolio/Interview-Prep-AI-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Interview Prep AI.png"
-                        alt="Screenshot of a custom-built interview prep ai platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Interview Prep AI.png" alt="Screenshot of a custom-built interview prep ai platform" width="335" height="188">
                     <p class="project-name">Interview Prep AI</p>
                   </a>
                 </div>
@@ -928,15 +911,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="300">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://task-manager-1-koap.onrender.com" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Task-Manager.webp 1x, images/portfolio/Task-Manager-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Task Manager.png"
-                        alt="Screenshot of a custom-built task manager platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Task Manager.png" alt="Screenshot of a custom-built task manager platform" width="335" height="188">
                     <p class="project-name">Task Manager</p>
                   </a>
                 </div>
@@ -944,15 +923,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="100">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://bookmark-manager-blue.vercel.app" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Bookmark-Manager.webp 1x, images/portfolio/Bookmark-Manager-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Bookmark-Manager.png"
-                        alt="Screenshot of a custom-built bookmark manager platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Bookmark-Manager.png" alt="Screenshot of a custom-built bookmark manager platform" width="335" height="188">
                     <p class="project-name">Bookmark Manager</p>
                   </a>
                 </div>
@@ -960,15 +935,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="200">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://media-player-ten-self.vercel.app" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Media-Player.webp 1x, images/portfolio/Media-Player-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Media-Player.png"
-                        alt="Screenshot of a custom-built media player platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Media-Player.png" alt="Screenshot of a custom-built media player platform" width="335" height="188">
                     <p class="project-name">Media Player</p>
                   </a>
                 </div>
@@ -976,15 +947,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="300">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://password-manager-nu-ten.vercel.app" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Password-Manager.webp 1x, images/portfolio/Password-Manager-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Password-Manager.png"
-                        alt="Screenshot of a custom-built password manager platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Password-Manager.png" alt="Screenshot of a custom-built password manager platform" width="335" height="188">
                     <p class="project-name">Password Manager</p>
                   </a>
                 </div>
@@ -992,15 +959,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="100">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://netflix-clone-sooty-phi.vercel.app" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Netflix-Clone.webp 1x, images/portfolio/Netflix-Clone-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Netflix-Clone.png"
-                        alt="Screenshot of a custom-built netflix clone platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Netflix-Clone.png" alt="Screenshot of a custom-built netflix clone platform" width="335" height="188">
                     <p class="project-name">Netflix Clone</p>
                   </a>
                 </div>
@@ -1008,15 +971,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="200">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://spotify-clone-nu-two-55.vercel.app" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Spotify-Clone.webp 1x, images/portfolio/Spotify-Clone-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Spotify-Clone.png"
-                        alt="Screenshot of a custom-built spotify clone platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Spotify-Clone.png" alt="Screenshot of a custom-built spotify clone platform" width="335" height="188">
                     <p class="project-name">Spotify Clone</p>
                   </a>
                 </div>
@@ -1024,15 +983,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="300">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://software-download-portal.vercel.app" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Software-Download-Portal.webp 1x, images/portfolio/Software-Download-Portal-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Software-Download-Portal.png"
-                        alt="Screenshot of a custom-built software download portal platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Software-Download-Portal.png" alt="Screenshot of a custom-built software download portal platform" width="335" height="188">
                     <p class="project-name">Software Download Portal</p>
                   </a>
                 </div>
@@ -1040,15 +995,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="100">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://url-shortner-ecru-tau.vercel.app" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/URL-Shortner.webp 1x, images/portfolio/URL-Shortner-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/URL-Shortner.png"
-                        alt="Screenshot of a custom-built url shortner platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/URL-Shortner.png" alt="Screenshot of a custom-built url shortner platform" width="335" height="188">
                     <p class="project-name">URL Shortner</p>
                   </a>
                 </div>
@@ -1056,15 +1007,11 @@
             </div>
             <!-- ====== portfolio item End ====== -->
             <!-- ====== portfolio item start ====== -->
-            <div class="portfolio-item padd-15" data-aos="zoom-in" data-aos-delay="200">
+            <div class="portfolio-item padd-15">
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://expense-tracker-rk26.onrender.com" target="_blank" rel="noopener">
-                    <picture>
-                      <source srcset="images/portfolio/Expense_Tracker.webp 1x, images/portfolio/Expense_Tracker-2x.webp 2x" type="image/webp">
-                      <img src="images/portfolio/Expense_Tracker.png"
-                        alt="Screenshot of a custom-built expense tracker platform" width="335" height="188">
-                    </picture>
+                    <img src="images/portfolio/Expense_Tracker.png" alt="Screenshot of a custom-built expense tracker platform" width="335" height="188">
                     <p class="project-name">Expense Tracker</p>
                   </a>
                 </div>
@@ -1079,7 +1026,7 @@
       <section class="contact section" id="contact">
         <div class="container">
           <div class="row">
-            <div class="section-title padd-15" data-aos="fade-down" data-aos-duration="800">
+            <div class="section-title padd-15">
               <h2>Contact Me</h2>
             </div>
           </div>
@@ -1187,8 +1134,7 @@
   <!-- ===== JS Files ===== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"
     referrerpolicy="no-referrer" defer></script>
-  <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
   <!-- Vanilla Tilt for 3D Card Effect -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
   <!-- Particles.js for Background -->
@@ -1206,16 +1152,6 @@
   <script>
     // Use requestIdleCallback for non-critical library initialization
     const initLibraries = () => {
-      // Initialize AOS
-      if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: 800,
-          easing: 'ease-in-out',
-          once: true,
-          offset: 100
-        });
-      }
-
       // Initialize Particles.js
       if (typeof particlesJS !== 'undefined') {
         const skinColor = getComputedStyle(document.documentElement).getPropertyValue('--skin-color').trim() || '#fa5252';
