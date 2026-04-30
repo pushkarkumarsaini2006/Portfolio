@@ -46,6 +46,28 @@ ul {
     list-style: none;
 }
 
+/* Keep animations and transitions in camera mode */
+html.camera-mode {
+    --transition-duration: 0.1s;
+}
+
+/* Allow clicks and animations to work normally */
+html.camera-mode [data-clicked] {
+    animation: clickFeedback 0.3s ease !important;
+}
+
+@keyframes clickFeedback {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .section {
     background: var(--bg-black-900);
     min-height: 100vh;
@@ -426,19 +448,6 @@ h2.my-profession {
     opacity: 1 !important;
 }
 
-.home .home-img img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    transition: transform 0.4s ease;
-}
-
-.home-img:hover img {
-    transform: scale(1.08) translateY(-15px);
-}
-
 .home-img::before {
     content: '';
     position: absolute;
@@ -510,7 +519,8 @@ h2.my-profession {
 }
 
 .home-img:hover img {
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+    transform: scale(1.08) translateY(-15px) !important;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* About */
@@ -872,7 +882,7 @@ h2.my-profession {
 }
 
 .portfolio .portfolio-item-inner:hover .portfolio-img img {
-    transform: scale(1.1);
+    transform: scale(1.15) translateY(-10px);
 }
 
 /* contact */

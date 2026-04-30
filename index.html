@@ -373,7 +373,7 @@
       transition: all 0.5s ease;
     }
     .portfolio-item-inner:hover .portfolio-img img {
-      transform: scale(1.1);
+      transform: scale(1.15) translateY(-10px);
     }
     
     /* Timeline Glow - Subtle */
@@ -565,7 +565,7 @@
                 technologies to solve complex problems, I aim to deliver high quality, reliable solutions that meet
                 client and user needs.</p>
               <a href="https://drive.google.com/file/d/1ALl5Ovd9Juxc4l9_LlCr1wE-S8aJHPHi/view?usp=sharing"
-                target="blank" class="btn ripple">Download Resume</a>
+                target="_blank" class="btn ripple">Download Resume</a>
               <!-- Social Links -->
               <div class="social-links">
                 <a href="https://github.com/pushkarkumarsaini2006" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
@@ -1121,6 +1121,9 @@
     <div class="day-night s-icon">
       <i class="fas "></i>
     </div>
+    <div id="input-mode-toggler" class="s-icon input-mode-toggler" title="Switch to hand gesture control">
+      <i class="fas fa-hand-paper"></i>
+    </div>
     <span class="switcher-title">Theme Colors</span>
     <div class="colors">
       <span class="color-1" onclick="setActiveStyle('color-1')"></span>
@@ -1139,8 +1142,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
   <!-- Particles.js for Background -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-  <script src="js/script.min.js" defer></script>
-  <script src="js/style-switcher.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+  <script src="js/style-switcher.js" defer></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
@@ -1416,9 +1419,10 @@
       });
     });
 
-    // Add ripple effect to buttons
+    // Add ripple effect to buttons (only in hand gesture mode)
     buttons.forEach(btn => {
       btn.addEventListener('click', function(e) {
+        if (window.inputControlState && window.inputControlState.mode !== "hand") return;
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
