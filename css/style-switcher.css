@@ -44,10 +44,6 @@
     top: 55px;
 }
 
-.style-switcher .input-mode-toggler {
-    top: 110px;
-}
-
 .style-switcher .switcher-title {
     display: block;
     margin: 0 0 10px;
@@ -88,57 +84,4 @@
 
 .style-switcher .color-5 {
     background: #505050;
-}
-
-.hand-gesture-preview {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    width: 170px;
-    background: rgba(0, 0, 0, 0.78);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    z-index: 160;
-    display: none;
-    pointer-events: none;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-.hand-gesture-preview.active {
-    display: block;
-}
-
-.hand-gesture-preview-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    color: #ffffff;
-    padding: 6px 8px;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.hand-gesture-preview-stage {
-    position: relative;
-    width: 170px;
-    aspect-ratio: 4 / 3;
-}
-
-.hand-gesture-preview video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    position: absolute;
-    inset: 0;
-    transform: scaleX(-1);
-}
-
-.hand-gesture-preview canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    inset: 0;
-    transform: scaleX(-1);
 }

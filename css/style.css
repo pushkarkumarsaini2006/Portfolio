@@ -46,28 +46,6 @@ ul {
     list-style: none;
 }
 
-/* Keep animations and transitions in camera mode */
-html.camera-mode {
-    --transition-duration: 0.1s;
-}
-
-/* Allow clicks and animations to work normally */
-html.camera-mode [data-clicked] {
-    animation: clickFeedback 0.3s ease !important;
-}
-
-@keyframes clickFeedback {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(0.95);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
 .section {
     background: var(--bg-black-900);
     min-height: 100vh;
