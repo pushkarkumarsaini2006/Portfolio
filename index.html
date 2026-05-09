@@ -17,17 +17,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap">
   <!-- ===== CSS Files ===== -->
   <link rel="stylesheet" href="css/style.css">
-  <!-- Font Awesome with preload -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Font Awesome - async loaded to prevent render blocking -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'; this.onload=null;" crossorigin>
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-  <!-- ====== Style Switcher ====== -->
-  <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1">
-  <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-  <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-  <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-  <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+  <!-- ====== Style Switcher (deferred as non-critical) ====== -->
+  <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" media="print" onload="this.media='all'; this.onload=null;">
+  <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" media="print" onload="this.media='all'; this.onload=null;" disabled>
+  <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" media="print" onload="this.media='all'; this.onload=null;" disabled>
+  <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" media="print" onload="this.media='all'; this.onload=null;" disabled>
+  <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" media="print" onload="this.media='all'; this.onload=null;" disabled>
   <!-- Style switcher CSS deferred (non-critical for initial paint) -->
-  <link rel="stylesheet" href="css/style-switcher.css">
+  <link rel="stylesheet" href="css/style-switcher.css" media="print" onload="this.media='all'; this.onload=null;">
   <!-- Preload critical Font Awesome font files -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -97,7 +98,11 @@
               </div>
             </div>
             <div class="home-img padd-15">
-              <img src="images/Self.png" alt="Pushkar Kumar Saini" width="262" height="426" loading="eager">
+              <picture>
+                <source srcset="images/Self.webp" type="image/webp">
+                <source srcset="images/Self.png" type="image/png">
+                <img src="images/Self.png" alt="Pushkar Kumar Saini" width="262" height="426" loading="eager">
+              </picture>
             </div>
           </div>
         </div>
@@ -414,7 +419,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://blog-application-1-i0me.onrender.com" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Blog Application.png" alt="Screenshot of custom-built blog application platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Blog-Application.webp" type="image/webp">
+                      <source srcset="images/portfolio/Blog Application.png" type="image/png">
+                      <img src="images/portfolio/Blog Application.png" alt="Screenshot of custom-built blog application platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Blog Application</p>
                   </a>
                 </div>
@@ -426,7 +435,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://interview-prep-ai-1-428b.onrender.com" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Interview Prep AI.png" alt="Screenshot of a custom-built interview prep ai platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Interview-Prep-AI.webp" type="image/webp">
+                      <source srcset="images/portfolio/Interview Prep AI.png" type="image/png">
+                      <img src="images/portfolio/Interview Prep AI.png" alt="Screenshot of a custom-built interview prep ai platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Interview Prep AI</p>
                   </a>
                 </div>
@@ -438,7 +451,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://task-manager-1-koap.onrender.com" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Task Manager.png" alt="Screenshot of a custom-built task manager platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Task-Manager.webp" type="image/webp">
+                      <source srcset="images/portfolio/Task Manager.png" type="image/png">
+                      <img src="images/portfolio/Task Manager.png" alt="Screenshot of a custom-built task manager platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Task Manager</p>
                   </a>
                 </div>
@@ -450,7 +467,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://bookmark-manager-blue.vercel.app" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Bookmark-Manager.png" alt="Screenshot of a custom-built bookmark manager platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Bookmark-Manager.webp" type="image/webp">
+                      <source srcset="images/portfolio/Bookmark-Manager.png" type="image/png">
+                      <img src="images/portfolio/Bookmark-Manager.png" alt="Screenshot of a custom-built bookmark manager platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Bookmark Manager</p>
                   </a>
                 </div>
@@ -462,7 +483,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://media-player-ten-self.vercel.app" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Media-Player.png" alt="Screenshot of a custom-built media player platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Media-Player.webp" type="image/webp">
+                      <source srcset="images/portfolio/Media-Player.png" type="image/png">
+                      <img src="images/portfolio/Media-Player.png" alt="Screenshot of a custom-built media player platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Media Player</p>
                   </a>
                 </div>
@@ -474,7 +499,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://password-manager-nu-ten.vercel.app" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Password-Manager.png" alt="Screenshot of a custom-built password manager platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Password-Manager.webp" type="image/webp">
+                      <source srcset="images/portfolio/Password-Manager.png" type="image/png">
+                      <img src="images/portfolio/Password-Manager.png" alt="Screenshot of a custom-built password manager platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Password Manager</p>
                   </a>
                 </div>
@@ -486,7 +515,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://netflix-clone-sooty-phi.vercel.app" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Netflix-Clone.png" alt="Screenshot of a custom-built netflix clone platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Netflix-Clone.webp" type="image/webp">
+                      <source srcset="images/portfolio/Netflix-Clone.png" type="image/png">
+                      <img src="images/portfolio/Netflix-Clone.png" alt="Screenshot of a custom-built netflix clone platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Netflix Clone</p>
                   </a>
                 </div>
@@ -498,7 +531,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://spotify-clone-nu-two-55.vercel.app" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Spotify-Clone.png" alt="Screenshot of a custom-built spotify clone platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Spotify-Clone.webp" type="image/webp">
+                      <source srcset="images/portfolio/Spotify-Clone.png" type="image/png">
+                      <img src="images/portfolio/Spotify-Clone.png" alt="Screenshot of a custom-built spotify clone platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Spotify Clone</p>
                   </a>
                 </div>
@@ -510,7 +547,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://software-download-portal.vercel.app" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Software-Download-Portal.png" alt="Screenshot of a custom-built software download portal platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Software-Download-Portal.webp" type="image/webp">
+                      <source srcset="images/portfolio/Software-Download-Portal.png" type="image/png">
+                      <img src="images/portfolio/Software-Download-Portal.png" alt="Screenshot of a custom-built software download portal platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Software Download Portal</p>
                   </a>
                 </div>
@@ -522,7 +563,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://url-shortner-ecru-tau.vercel.app" target="_blank" rel="noopener">
-                    <img src="images/portfolio/URL-Shortner.png" alt="Screenshot of a custom-built url shortner platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/URL-Shortner.webp" type="image/webp">
+                      <source srcset="images/portfolio/URL-Shortner.png" type="image/png">
+                      <img src="images/portfolio/URL-Shortner.png" alt="Screenshot of a custom-built url shortner platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">URL Shortner</p>
                   </a>
                 </div>
@@ -534,7 +579,11 @@
               <div class="portfolio-item-inner shadow-dark" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                 <div class="portfolio-img">
                   <a href="https://expense-tracker-rk26.onrender.com" target="_blank" rel="noopener">
-                    <img src="images/portfolio/Expense_Tracker.png" alt="Screenshot of a custom-built expense tracker platform" width="335" height="188">
+                    <picture>
+                      <source srcset="images/portfolio/Expense_Tracker.webp" type="image/webp">
+                      <source srcset="images/portfolio/Expense_Tracker.png" type="image/png">
+                      <img src="images/portfolio/Expense_Tracker.png" alt="Screenshot of a custom-built expense tracker platform" width="335" height="188">
+                    </picture>
                     <p class="project-name">Expense Tracker</p>
                   </a>
                 </div>
@@ -660,11 +709,18 @@
 
   <!-- Vanilla Tilt for 3D Card Effect -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
-  <!-- Particles.js for Background -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
-  <script src="js/script.js" defer></script>
-  <script src="js/style-switcher.js" defer></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+  <!-- Particles.js for Background - lazy loaded for better performance -->
+  <script>
+    window.addEventListener('load', function() {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+      script.defer = true;
+      document.body.appendChild(script);
+    });
+  </script>
+  <script src="js/script.min.js" defer></script>
+  <script src="js/style-switcher.min.js" defer></script>
+  <script async src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 
 </html>
