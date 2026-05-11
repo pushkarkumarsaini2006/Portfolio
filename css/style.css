@@ -490,9 +490,10 @@ h2.my-profession {
 }
 
 .home .home-img img {
+    display: block;
     margin: auto;
     border-radius: 18px;
-    height: 400px;
+    height: 392px;
     width: 270px;
     object-fit: cover;
     object-position: center top;
